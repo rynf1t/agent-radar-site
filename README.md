@@ -3,9 +3,16 @@
 The landing page and docs for [radar](../agent-radar) and [craftkit](../craftkit).
 SvelteKit 3, prerendered to static files with `adapter-static`.
 
-**Project Status:** local only. Not deployed. The GitHub links and
-`site.origin` in `src/lib/site.ts` are placeholders until the repositories are
-public and a domain is chosen.
+**Project Status:** headed for https://radar.itsryan.me on Netlify, deployed
+from the `build` folder with the Netlify CLI. `site.origin` in
+`src/lib/site.ts` is that address, and every Markdown link is built from it.
+
+## Deploy
+
+```sh
+npm run build
+npx netlify-cli deploy --dir build --prod
+```
 
 ## Run it
 

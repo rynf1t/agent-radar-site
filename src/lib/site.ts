@@ -3,7 +3,7 @@
 // taken from the radar and craftkit READMEs.
 export const site = {
 	name: 'radar',
-	origin: 'https://radar.example.com', // placeholder until a domain is chosen
+	origin: 'https://radar.itsryan.me',
 	radarRepo: 'https://github.com/rynf1t/agent-radar',
 	craftkitRepo: 'https://github.com/rynf1t/craftkit',
 	install: 'go install github.com/rynf1t/agent-radar/cmd/radar@latest',
