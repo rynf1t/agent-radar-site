@@ -28,6 +28,25 @@ Clicking a row jumps there too.
 
 Enter focuses the agent's pane in its session, then asks the Rex app to show that session. The second step needs **Remote Control**, which you turn on in Rex Settings under Rex Server. Without it the pane tells you so instead of failing quietly.
 
+## One key from any session
+
+A radar pane belongs to the session that opened it. To bring the radar up from anywhere, add the Rex plugin. It's `rex/radar.lua` in the radar repository. From a clone of it:
+
+```sh
+ln -s "$PWD/rex/radar.lua" ~/.config/rex/radar.lua
+```
+
+Then load it from `~/.config/rex/init.lua`:
+
+```lua
+local radar = dofile(os.getenv("HOME") .. "/.config/rex/radar.lua")
+radar.setup{ key = "cmd+shift+u" }
+```
+
+Run `rex config reload`. Cmd+Shift+U now floats the radar over whatever you're looking at. Enter jumps to an agent and closes the float. Esc or Cmd+Shift+U closes it and puts focus back where it was.
+
+`setup` also takes `binary`, the radar to run, which is `~/go/bin/radar` by default. Pass `key = false` to keep the action in the command palette without a key.
+
 ## Close it
 
 ```sh

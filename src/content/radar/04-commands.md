@@ -11,7 +11,7 @@ radar show [--split right|below] [--ratio PCT] [--theme auto|light|dark]
 radar hide
 radar ls [--json] [--state STATE]
 radar focus [TARGET]
-radar view
+radar view [--popup [--back BLOCK]]
 radar render -o FILE.png [--width PX] [--height PX] [--theme light|dark]
 radar demo STATE [--kind KIND] [--msg TEXT] | radar demo cycle
 radar skill install|show|remove [--dir DIR] [--dry-run] [--force]
@@ -27,7 +27,7 @@ Closes the radar pane that `show` opened for this pane.
 
 ## ls
 
-Prints every agent in display order. `--json` prints the same list for scripts, indented on a terminal and compact when piped. `--state blocked` keeps one state.
+Prints every agent in display order. `--json` prints the same list for scripts, indented on a terminal and compact when piped. `--state blocked` keeps one state. Each agent in the JSON has `block_id`, `session`, `state`, `kind`, `title`, `msg`, `app`, `cwd`, `since` and `seen`.
 
 ## focus
 
@@ -35,7 +35,9 @@ Jumps to an agent. `TARGET` is a position from `radar ls` (1 is the most urgent)
 
 ## view
 
-Runs the radar in the current terminal instead of a new pane.
+Runs the radar in the current terminal instead of a new pane. This is what `show` runs.
+
+`--popup` closes it on Esc and after a jump, then focuses `BLOCK` again unless the jump stayed in this session. The [Cmd+Shift+U float](/docs/radar/quick-start#one-key-from-any-session) runs this.
 
 ## render
 

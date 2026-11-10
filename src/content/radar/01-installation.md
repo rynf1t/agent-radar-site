@@ -6,7 +6,7 @@ group: Get started
 
 **radar is a single Go binary. Install it, then run it inside a Rex terminal.**
 
-radar works with Rex Beta 0.1 on macOS. It reads the local Rex server through the `rex` CLI, so `rex` must be on your `PATH`, which it is in every Rex terminal.
+radar works with Rex Beta 0.1 on macOS and needs Go 1.26 or later to install. It reads the local Rex server through the `rex` CLI, so `rex` must be on your `PATH`, which it is in every Rex terminal.
 
 ## Install
 
@@ -24,12 +24,12 @@ radar skill install
 
 This writes `~/.claude/skills/radar/SKILL.md` and prints `created`, `unchanged` or `outdated`. A skill file radar didn't write is reported as `foreign` and left alone unless you pass `--force`. Use `--dry-run` to see what would change.
 
-## Build from a checkout
+## Work on radar and craftkit together
 
-radar builds against [craftkit](/docs/craftkit/overview). While both repositories sit side by side in `~/Projects`, radar's `go.mod` points at the local copy with a `replace`, so build from the checkout:
+radar builds on the published [craftkit](/docs/craftkit/overview). To change both at once, add this line to radar's `go.mod` and keep it out of commits:
 
-```sh
-go install ./cmd/radar
+```
+replace github.com/rynf1t/craftkit => ../craftkit
 ```
 
 ## Next

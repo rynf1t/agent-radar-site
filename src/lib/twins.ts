@@ -28,13 +28,13 @@ Agents report their own state through Rex's program status protocol, so radar ne
 |---|---|
 | blocked | Waiting on you: a permission, a question or a login |
 | error | Failed and stopped |
-| done | Finished, and you haven't looked yet |
+| done | Finished, and you haven't looked yet. Once you have, it drops to the bottom. |
 | working | Busy. The ring fills if the agent reports progress. |
 | idle | Waiting for its next instruction |
 
 ## Jump
 
-radar focuses the agent's pane, then asks Rex to show its session. It opens beside you without taking focus, and running \`radar show\` again reuses the same pane. Jumping needs Remote Control, which you turn on in Rex Settings under Rex Server.
+radar focuses the agent's pane, then asks Rex to show its session. Keep it open beside you with \`radar show\`, or add the Rex plugin and float it over any session with Cmd+Shift+U. Enter jumps and closes the float. Setup is in [the quick start](${site.origin}/docs/radar/quick-start.md#one-key-from-any-session). Jumping needs Remote Control, which you turn on in Rex Settings under Rex Server.
 
 ## Scripts and agents
 

@@ -26,7 +26,7 @@ const files = import.meta.glob('/src/content/*/*.md', {
 	eager: true
 }) as Record<string, string>;
 
-const langs = ['sh', 'go', 'json'];
+const langs = ['sh', 'go', 'json', 'lua'];
 const theme = createCssVariablesTheme({ name: 'css-variables', variablePrefix: '--shiki-' });
 const highlighter = await createHighlighter({ themes: [theme], langs });
 

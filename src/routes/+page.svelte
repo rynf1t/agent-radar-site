@@ -8,7 +8,7 @@
 	const states = [
 		{ s: 'blocked', name: 'blocked', text: 'Waiting on you: a permission, a question or a login' },
 		{ s: 'error', name: 'error', text: 'Failed and stopped' },
-		{ s: 'done', name: 'done', text: "Finished, and you haven't looked yet" },
+		{ s: 'done', name: 'done', text: "Finished, and you haven't looked yet. Once you have, it drops to the bottom." },
 		{ s: 'working', name: 'working', text: 'Busy. The ring fills if the agent reports progress.' },
 		{ s: 'idle', name: 'idle', text: 'Waiting for its next instruction' }
 	];
@@ -17,6 +17,7 @@
 		{ k: ['↑', '↓'], text: 'Move, or j and k' },
 		{ k: ['enter'], text: "Jump to that agent's pane" },
 		{ k: ['/'], text: 'Filter by session, title, message, state or folder' },
+		{ k: ['⌘', '⇧', 'U'], text: 'Float the radar over any session, with the Rex plugin' },
 		{ k: ['q'], text: 'Quit' }
 	];
 
@@ -95,8 +96,9 @@
 			<p class="eyebrow">Jump</p>
 			<h2>Enter takes you there.</h2>
 			<p>
-				radar focuses the agent's pane, then asks Rex to show its session. It opens beside you
-				without taking focus, and running <code>radar show</code> again reuses the same pane.
+				radar focuses the agent's pane, then asks Rex to show its session. Keep it open beside you
+				with <code>radar show</code>, or add the Rex plugin and float it over any session with
+				Cmd+Shift+U. Enter jumps and closes the float.
 			</p>
 			<p class="note">Jumping needs Remote Control, which you turn on in Rex Settings under Rex Server.</p>
 		</div>
