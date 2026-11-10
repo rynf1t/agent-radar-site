@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '#lib/site.js';
+	import { href, site } from '#lib/site.js';
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 	import CopyLine from '#lib/components/CopyLine.svelte';
@@ -22,7 +22,7 @@
 		name="description"
 		content="craftkit is four small Go packages: terminal colours, exit codes, an embedded agent skill installer, and program status reports."
 	/>
-	<link rel="alternate" type="text/markdown" href="/craftkit.md" title="Markdown" />
+	<link rel="alternate" type="text/markdown" href={href('/craftkit.md')} title="Markdown" />
 </svelte:head>
 
 <SiteHeader />
@@ -35,11 +35,11 @@
 		<p class="explain">
 			Follow the terminal's colours, share one exit code table, ship the agent skill inside the binary,
 			and report status to the terminal. Each package was pulled out of
-			<a href="/">radar</a> when it needed one, and the API will change while there's only one user.
+			<a href={href('/')}>radar</a> when it needed one, and the API will change while there's only one user.
 		</p>
 		<div class="cta">
 			<CopyLine command={site.craftkitInstall} />
-			<p class="req">Go 1.26 or later. <a href="/docs/craftkit/overview">Read the docs</a></p>
+			<p class="req">Go 1.26 or later. <a href={href('/docs/craftkit/overview')}>Read the docs</a></p>
 		</div>
 	</section>
 
@@ -50,7 +50,7 @@
 					<h2><code>{p.name}</code></h2>
 					<p>{p.description}</p>
 					<p class="chips">{#each chips[p.name] ?? [] as c (c)}<span>{c}</span>{/each}</p>
-					<a class="more" href={p.path}>{p.name} docs</a>
+					<a class="more" href={href(p.path)}>{p.name} docs</a>
 				</div>
 				<div class="sample">
 					<!-- Highlighted at build time from our own docs Markdown. -->

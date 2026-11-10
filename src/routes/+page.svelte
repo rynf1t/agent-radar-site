@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '#lib/site.js';
+	import { href, site } from '#lib/site.js';
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 	import CopyLine from '#lib/components/CopyLine.svelte';
@@ -43,7 +43,7 @@
 		name="description"
 		content="radar shows every coding agent across your Rex sessions in one pane, ordered by who needs you. Enter jumps there."
 	/>
-	<link rel="alternate" type="text/markdown" href="/index.md" title="Markdown" />
+	<link rel="alternate" type="text/markdown" href={href('/index.md')} title="Markdown" />
 </svelte:head>
 
 <SiteHeader />
@@ -62,7 +62,7 @@
 				<CopyLine command={site.install} />
 				<p class="req">{site.requirement}</p>
 			</div>
-			<p class="reveal" style:--i="4"><a class="more" href="/docs/radar/quick-start">Read the quick start</a></p>
+			<p class="reveal" style:--i="4"><a class="more" href={href('/docs/radar/quick-start')}>Read the quick start</a></p>
 		</div>
 		<div class="demo reveal" style:--i="2">
 			<RadarDemo />
@@ -78,7 +78,7 @@
 				<a href="https://www.superlogical.com/rex/docs/build/program-status">program status protocol</a>,
 				so radar never has to guess. It sorts by urgency, then by how long each agent has waited.
 			</p>
-			<a class="more" href="/docs/radar/states">States in detail</a>
+			<a class="more" href={href('/docs/radar/states')}>States in detail</a>
 		</div>
 		<ul class="states edge">
 			{#each states as st (st.s)}
@@ -120,7 +120,7 @@
 				Every command exits with a code a script can branch on. The agent skill ships inside the
 				binary, so it always matches the version you run.
 			</p>
-			<a class="more" href="/docs/radar/agents">Read this, agents</a>
+			<a class="more" href={href('/docs/radar/agents')}>Read this, agents</a>
 		</div>
 		<div class="code-stack">
 			<pre class="edge"><code><span class="c"># anything waiting on me?</span>
@@ -147,12 +147,12 @@
 				radar's colours, exit codes, skill installer and status reports live in craftkit, so the next
 				tool starts from the same place.
 			</p>
-			<a class="more" href="/craftkit">About craftkit</a>
+			<a class="more" href={href('/craftkit')}>About craftkit</a>
 		</div>
 		<ul class="cards">
 			{#each packages as p (p.name)}
 				<li class="card edge">
-					<a href="/docs/craftkit/{p.name}">
+					<a href={href(`/docs/craftkit/${p.name}`)}>
 						<code class="pkg">{p.name}</code>
 						<span class="ptext">{p.text}</span>
 						<span class="chips">{#each p.chips as c (c)}<span>{c}</span>{/each}</span>
@@ -179,7 +179,7 @@
 			</div>
 			<div>
 				<dt>Can my agent read these docs?</dt>
-				<dd>Yes. Add <code>.md</code> to any docs URL, or start at <a href="/llms.txt">llms.txt</a>.</dd>
+				<dd>Yes. Add <code>.md</code> to any docs URL, or start at <a href={href('/llms.txt')} data-sveltekit-reload>llms.txt</a>.</dd>
 			</div>
 		</dl>
 	</section>

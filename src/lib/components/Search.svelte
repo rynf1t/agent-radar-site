@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { search } from '#lib/search.svelte.js';
+	import { href } from '#lib/site.js';
 
 	type Entry = { path: string; title: string; page: string; group: string; text: string };
 	type Seg = { text: string; hit: boolean };
@@ -77,7 +78,7 @@
 
 	async function loadIndex() {
 		if (index.length) return;
-		const res = await fetch('/search.json');
+		const res = await fetch(href('/search.json'));
 		index = await res.json();
 	}
 
@@ -100,7 +101,7 @@
 	function choose(r: Result | undefined) {
 		if (!r) return;
 		search.hide();
-		goto(r.path);
+		goto(href(r.path));
 	}
 
 	function onkeydown(e: KeyboardEvent) {
@@ -195,7 +196,7 @@
 						role="option"
 						aria-selected={i === active}
 						class="item"
-						href={r.path}
+						href={href(r.path)}
 						onclick={(e) => {
 							e.preventDefault();
 							choose(r);

@@ -2,7 +2,7 @@
 // sidebar, llms.txt and the search index all come from src/content.
 import { Marked, type Tokens } from 'marked';
 import { createCssVariablesTheme, createHighlighter } from 'shiki';
-import { site } from './site.js';
+import { href, site } from './site.js';
 
 export type Heading = { id: string; text: string };
 export type Doc = {
@@ -91,7 +91,10 @@ function render(body: string) {
 			link(this: RendererThis, t: Tokens.Link) {
 				const external = /^https?:/.test(t.href);
 				const rel = external ? ' rel="noopener"' : '';
-				return `<a href="${t.href}"${rel}>${this.parser.parseInline(t.tokens)}</a>`;
+				// Plain files, not pages, so the router must not handle them.
+				const file = /\.(md|txt|json)(#|$)/.test(t.href) ? ' data-sveltekit-reload' : '';
+				const url = t.href.startsWith('/') ? href(t.href) : t.href;
+				return `<a href="${url}"${rel}${file}>${this.parser.parseInline(t.tokens)}</a>`;
 			}
 		}
 	});

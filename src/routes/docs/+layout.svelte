@@ -4,6 +4,7 @@
 	import Wordmark from '#lib/components/Wordmark.svelte';
 	import SearchTrigger from '#lib/components/SearchTrigger.svelte';
 	import { copyButtons } from '#lib/copy.js';
+	import { href } from '#lib/site.js';
 	import type { LayoutProps } from './$types';
 
 	let { data, children }: LayoutProps = $props();
@@ -20,9 +21,9 @@
 			<p class="label">{group.label}</p>
 			<ul>
 				{#each group.items as item (item.path)}
-					{@const here = current === item.path}
+					{@const here = current === href(item.path)}
 					<li>
-						<a class={['link', { here }]} href={item.path} aria-current={here ? 'page' : undefined}>{item.title}</a>
+						<a class={['link', { here }]} href={href(item.path)} aria-current={here ? 'page' : undefined}>{item.title}</a>
 						{#if here && item.headings.length}
 							<ul class="toc">
 								{#each item.headings as h (h.id)}

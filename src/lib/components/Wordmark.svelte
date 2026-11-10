@@ -1,8 +1,8 @@
 <script lang="ts">
-	let { href = '/' }: { href?: string } = $props();
+	import { href } from '#lib/site.js';
 </script>
 
-<a {href} class="wordmark" aria-label="radar home">
+<a href={href('/')} class="wordmark" aria-label="radar home">
 	<svg viewBox="0 0 20 20" aria-hidden="true">
 		<circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".28" />
 		<circle cx="10" cy="10" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55" />

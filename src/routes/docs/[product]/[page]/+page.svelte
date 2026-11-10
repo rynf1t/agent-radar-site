@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { href } from '#lib/site.js';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -9,7 +10,7 @@
 <svelte:head>
 	<title>{doc.title} · {product} docs</title>
 	<meta name="description" content={doc.description} />
-	<link rel="alternate" type="text/markdown" href="{doc.path}.md" title="Markdown" />
+	<link rel="alternate" type="text/markdown" href={href(`${doc.path}.md`)} title="Markdown" />
 </svelte:head>
 
 <article class="article">
@@ -24,14 +25,14 @@
 	<footer class="foot">
 		<nav class="pager" aria-label="Previous and next page">
 			{#if data.prev}
-				<a href={data.prev.path} class="prev"><span class="dir">Previous</span>{data.prev.title}</a>
+				<a href={href(data.prev.path)} class="prev"><span class="dir">Previous</span>{data.prev.title}</a>
 			{/if}
 			{#if data.next}
-				<a href={data.next.path} class="next"><span class="dir">Next</span>{data.next.title}</a>
+				<a href={href(data.next.path)} class="next"><span class="dir">Next</span>{data.next.title}</a>
 			{/if}
 		</nav>
 		<p class="md">
-			<a href="{doc.path}.md">This page as Markdown</a>
+			<a href={href(`${doc.path}.md`)} data-sveltekit-reload>This page as Markdown</a>
 		</p>
 	</footer>
 </article>

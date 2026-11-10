@@ -14,6 +14,15 @@ npm run build
 npx netlify-cli deploy --dir build --prod
 ```
 
+For GitHub Pages, which serves the site under `/agent-radar-site`, build with
+the base path and the full address. `src/lib/site.ts` explains both. Every
+link goes through `href()` so it picks up the base.
+
+```sh
+VITE_BASE=/agent-radar-site VITE_ORIGIN=https://rynf1t.github.io/agent-radar-site npm run build
+touch build/.nojekyll   # serve _app and the .md files as they are
+```
+
 ## Run it
 
 ```sh

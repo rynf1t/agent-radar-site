@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { site } from '#lib/site.js';
+	import { href, site } from '#lib/site.js';
 </script>
 
 <footer class="footer">
-	<a href="/docs/radar/installation">Docs</a>
-	<a href="/craftkit">craftkit</a>
+	<a href={href('/docs/radar/installation')}>Docs</a>
+	<a href={href('/craftkit')}>craftkit</a>
 	<span class="rule" aria-hidden="true"></span>
-	<a href="/llms.txt">llms.txt</a>
+	<a href={href('/llms.txt')} data-sveltekit-reload>llms.txt</a>
 	<a href={site.radarRepo}>GitHub</a>
 </footer>
 

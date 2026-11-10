@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { site } from '#lib/site.js';
+	import { href, site } from '#lib/site.js';
 	import Wordmark from './Wordmark.svelte';
 	import SearchTrigger from './SearchTrigger.svelte';
 
@@ -14,7 +14,7 @@
 	<Wordmark />
 	<nav aria-label="Site">
 		{#each links as l (l.href)}
-			<a href={l.href} aria-current={page.url.pathname.startsWith(l.match) ? 'page' : undefined}>{l.label}</a>
+			<a href={href(l.href)} aria-current={page.url.pathname.startsWith(href(l.match)) ? 'page' : undefined}>{l.label}</a>
 		{/each}
 		<a href={site.radarRepo} class="gh">GitHub</a>
 		<SearchTrigger />

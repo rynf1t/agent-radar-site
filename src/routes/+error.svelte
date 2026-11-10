@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { search } from '#lib/search.svelte.js';
+	import { href } from '#lib/site.js';
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 </script>
@@ -22,7 +23,7 @@
 	{/if}
 	<div class="actions">
 		<button type="button" class="primary" onclick={search.show}>Search the docs <kbd>⌘K</kbd></button>
-		<a href="/">Go home</a>
+		<a href={href('/')}>Go home</a>
 	</div>
 </main>
 
